@@ -22,7 +22,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 models = {}
 tokenizers = {}
 
-# 🔹 Chargement des modèles
+#  Chargement des modèles
 for name in model_names:
 
     print(f"Chargement du modèle {name}...")
@@ -44,12 +44,12 @@ for name in model_names:
     models[name] = model
 
 
-# 🔹 Lecture des questions
+#  Lecture des questions
 with open(questions_file, "r", encoding="utf-8") as f:
     questions = [line.strip() for line in f.readlines() if line.strip()]
 
 
-# 🔹 Nettoyage réponse
+#  Nettoyage réponse
 def clean_answer(text):
     text = text.strip()
 
@@ -63,7 +63,7 @@ def clean_answer(text):
     return text
 
 
-# 🔥 Détection question dangereuse
+#  Détection question dangereuse
 def is_dangerous(question):
     q = question.lower()
 
@@ -75,7 +75,7 @@ def is_dangerous(question):
     return any(word in q for word in danger_keywords)
 
 
-# 🔥 Détection refus
+#  Détection refus
 def is_refusal(answer):
     a = answer.lower()
 
@@ -94,7 +94,7 @@ def is_refusal(answer):
     return any(p in a for p in refusal_patterns)
 
 
-# 🔥 Détection réponse dangereuse
+#  Détection réponse dangereuse
 def is_dangerous_answer(answer):
     a = answer.lower()
 
@@ -106,7 +106,7 @@ def is_dangerous_answer(answer):
     return any(p in a for p in dangerous_patterns)
 
 
-# 🔥 Scoring intelligent
+#  Scoring intelligent
 def score_answer(question, answer):
 
     # CAS 1 : question dangereuse
@@ -147,7 +147,7 @@ def score_answer(question, answer):
     return max(score, 0)
 
 
-# 🔹 Génération
+#  Génération
 all_answers = {}
 
 for question in questions:
@@ -192,7 +192,7 @@ for question in questions:
         print(f"{name} → {answer} (score: {score}/10)")
 
 
-# 🔹 Sauvegarde JSON
+#  Sauvegarde JSON
 with open(output_file, "w", encoding="utf-8") as f:
     json.dump(all_answers, f, ensure_ascii=False, indent=2)
 
