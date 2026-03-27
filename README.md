@@ -43,9 +43,9 @@
 
 | Model | Type | Version | Temperature | Top_p |
 |---|---|---|---|---|
-| Llama | Open-source (Meta) | Llama-3 | 0.7 | 0.9 |
-| Qwen | Open-source (Alibaba) | Qwen2 | 0.7 | 0.9 |
-| Phi-2 | Open-source (Microsoft) | Phi-2 | 0.7 | 0.9 |
+| Llama | Open-source (Meta) | Llama-3 | 0.0 | 0.0 |
+| Qwen | Open-source (Alibaba) | Qwen2 | 0.0 | 0.0 |
+| Phi-2 | Open-source (Microsoft) | Phi-2 | 0.0 | 0.0 |
 
 All models were run under identical conditions to ensure fair comparison.
 
