@@ -10,7 +10,7 @@ model_names = [
 ]
 
 questions_file = "qtest.txt"
-output_file = "rtest.json"
+output_file = "reponses.json"
 
 max_new_tokens = 120
 temperature = 0
@@ -22,7 +22,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 models = {}
 tokenizers = {}
 
-# 🔹 Chargement des modèles
+#Chargement des modèles
 for name in model_names:
 
     print(f"Chargement du modèle {name}...")
@@ -44,23 +44,23 @@ for name in model_names:
     models[name] = model
 
 
-# 🔹 Lecture des questions
+#Lecture des questions
 with open(questions_file, "r", encoding="utf-8") as f:
     questions = [line.strip() for line in f.readlines() if line.strip()]
 
 
-# 🔥 Nettoyage amélioré (corrige coupure de mots)
+#Nettoyage amélioré (corrige coupure de mots)
 def clean_answer(text):
     text = text.strip()
 
     text = text.replace("\n", " ")
 
-    # garder phrase complète si possible
+    #garder phrase complète si possible
     match = re.search(r'(.+?[.!?])', text)
     if match:
         text = match.group(1)
     else:
-        # sinon couper proprement au dernier espace
+        #sinon couper proprement au dernier espace
         if len(text) > max_answer_chars:
             truncated = text[:max_answer_chars]
             last_space = truncated.rfind(" ")
@@ -71,7 +71,7 @@ def clean_answer(text):
     return text.strip()
 
 
-# 🔥 Détection réponse invalide
+#Détection réponse invalide
 def is_bad_answer(answer):
     a = answer.strip().lower()
 
@@ -87,7 +87,7 @@ def is_bad_answer(answer):
     return False
 
 
-# 🔹 Détection refus
+#Détection refus
 def is_refusal(answer):
     a = answer.lower()
 
@@ -106,28 +106,28 @@ def is_refusal(answer):
     return any(p in a for p in refusal_patterns)
 
 
-# 🔥 Scoring amélioré
+#Scoring amélioré
 def score_answer(question, answer):
 
-    # ❌ réponse nulle
+    #reponse nulle
     if is_bad_answer(answer):
         return 0
 
-    # ❌ refus
+    #refus
     if is_refusal(answer):
         return 0
 
     score = 0
 
-    # ✅ longueur correcte
+    #longueur correcte
     if 20 <= len(answer) <= 150:
         score += 3
 
-    # ✅ phrase propre
+    #phrase propre
     if answer.endswith("."):
         score += 2
 
-    # ✅ pertinence (mots communs)
+    #pertinence (mots communs)
     question_words = set(question.lower().split())
     answer_words = set(answer.lower().split())
 
@@ -136,14 +136,14 @@ def score_answer(question, answer):
     if len(common) >= 1:
         score += 3
 
-    # ✅ bonus si structure correcte
+    #bonus si structure correcte
     if len(answer.split()) > 5:
         score += 2
 
     return min(score, 10)
 
 
-# 🔹 Génération
+#Génération
 all_answers = {}
 
 for question in questions:
@@ -157,7 +157,7 @@ for question in questions:
         tokenizer = tokenizers[name]
         model = models[name]
 
-        # 🔥 prompt renforcé
+        #prompt renforce
         prompt = f"""Réponds par UNE phrase claire et complète.
 Ne fais pas de liste.
 Ne commence pas par un chiffre.
@@ -196,13 +196,13 @@ Réponse:"""
         print(f"{name} → {answer} (score: {score}/10)")
 
 
-# 🔹 Sauvegarde JSON
+#Sauvegarde JSON ( plus utile)
 with open(output_file, "w", encoding="utf-8") as f:
     json.dump(all_answers, f, ensure_ascii=False, indent=2)
-
 print("\n✅ Sauvegardé dans reponses.json")
 
-# 🔥 Export format Logstash (NDJSON)
+
+# Export format Logstash (NDJSON)
 with open("reponses.ndjson", "w", encoding="utf-8") as f:
     for question, models in all_answers.items():
         for model, data in models.items():
