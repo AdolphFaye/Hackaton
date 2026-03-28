@@ -1,0 +1,24 @@
+# requirements.txt
+# HarmBench LLM Evaluation — Python dependencies
+
+# Core
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Hugging Face models (Llama, Qwen, Phi-2)
+transformers>=4.40.0
+torch>=2.0.0
+accelerate>=0.27.0
+huggingface-hub>=0.22.0
+
+# Data handling
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Analysis & visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+jupyter>=1.0.0
+
+# Optional: OpenAI API (if tested)
+# openai>=1.0.0
