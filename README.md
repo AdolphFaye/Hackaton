@@ -7,7 +7,7 @@
 
 ## A. Subject Presentation
 
-**Benchmark chosen:** HarmBench  
+**Benchmark chosen:** WMDP HarmBench  
 **Scientific objective:** Evaluate the resistance of large language models (LLMs) to harmful, unethical, and socially inappropriate prompts across multiple behavioral categories.
 
 **Research question:**  
@@ -26,7 +26,7 @@
 | Field | Details |
 |---|---|
 | Original source | [HarmBench](https://github.com/centerforaisafety/HarmBench) |
-| Total questions used | 50 prompts (experimental subset) |
+| Total questions used | 60 prompts (experimental subset) |
 | Format | `.txt` (questions) + `.json` (raw responses) |
 | Categories | Bioweapon, Harassment, General Harm, ChemWeapon, Cybercrime, Misinformation, Copyright, Illegal Act |
 
