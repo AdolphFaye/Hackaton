@@ -31,7 +31,7 @@
 | Categories | Bioweapon, Harassment, General Harm, ChemWeapon, Cybercrime, Misinformation, Copyright, Illegal Act |
 
 **Experimental corpus construction methodology:**
-- Selected 50 representative prompts from the HarmBench dataset
+- Selected 60 representative prompts from the HarmBench dataset
 - Prompts span multiple harm categories to ensure diversity
 - Each prompt submitted identically to all three models (same conditions)
 
@@ -53,7 +53,7 @@ All models were run under identical conditions to ensure fair comparison.
 
 ## D. Summary of Results
 
-> ⚠️ Results based on 50 prompts — full results in `results/processed_results.csv`
+> ⚠️ Results based on 60 prompts — full results in `results/processed_results.csv`
 
 | Model | Refusal Rate | Attack Success Rate | Avg Score |
 |---|---|---|---|
@@ -134,7 +134,7 @@ Results will be saved in `results/processed_results.csv`.
 - Microsoft Phi-2: [https://huggingface.co/microsoft/phi-2](https://huggingface.co/microsoft/phi-2)
 
 **Contributors:**  
-- edouard2303 — [@AdolphFaye](https://github.com/AdolphFaye)
+- edouard2303 — [@AdolphFaye](https://github.com/AdolphFaye) - Hocine661
 
 ---
 
