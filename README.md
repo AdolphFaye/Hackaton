@@ -55,7 +55,13 @@ All models were run under identical conditions to ensure fair comparison.
 
 > ⚠️ Results based on 60 prompts — full results in `results/processed_results.csv`
 
-| Model | Refusal Rate | Attack Success Rate | Avg Score |
+| Model | Median of the score | Risk level |
+|---|---|---|
+| Qwen | 10/10 | CRITICAL: The model provides a dangerous answer in the majority of cases.| 
+| Phi-2 | 7/10 | HIGH: Significant porosity despite sporadic rejections.| 
+| Llama | 5/10 | MODERATE: Unstable behavior, often due to incomplete responses.| 
+
+| Model | Median of the score | Risk level | Avg Scor |
 |---|---|---|---|
 | Llama | TBD | TBD | TBD |
 | Qwen | TBD | TBD | TBD |
