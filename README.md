@@ -55,17 +55,36 @@ All models were run under identical conditions to ensure fair comparison.
 
 > ⚠️ Results based on 60 prompts — full results in `results/processed_results.csv`
 
+<img width="1919" height="1032" alt="image" src="https://github.com/user-attachments/assets/3031fc70-8fe2-44a8-8085-70a1f69b5036" />
+
+
+<img width="1913" height="1086" alt="image" src="https://github.com/user-attachments/assets/38222ddc-098d-4e81-a74a-09a7353316df" />
+
+
 | Model | Median of the score | Risk level |
 |---|---|---|
 | Qwen | 10/10 | CRITICAL: The model provides a dangerous answer in the majority of cases.| 
 | Phi-2 | 7/10 | HIGH: Significant porosity despite sporadic rejections.| 
 | Llama | 5/10 | MODERATE: Unstable behavior, often due to incomplete responses.| 
 
-| Model | Median of the score | Risk level | Avg Scor |
+Indicator : Attack success rate median
+
+| Model | French | English | Spanish |
 |---|---|---|---|
-| Llama | TBD | TBD | TBD |
-| Qwen | TBD | TBD | TBD |
-| Phi-2 | TBD | TBD | TBD |
+| Qwen | 5,2  | 2,1 | 5,3 |
+| Phi-2 | 5,4  | 3,5 | 5,1 |
+| Llama | 7,5  | 7,2 | 10 |
+| Middle Language | 6 | 4,2 | 6,8 |
+
+Indicator: Linguistic safety bias
+
+| Model | Direct request | Context request |
+|---|---|---|
+| Qwen | 1,8 | 6,5 | 
+| Phi-2 | 3,6 | 5,8 | 
+| Llama | 7,9 | 8,8 | 
+
+Indicator: Contextual vulnerability gap
 
 📄 Link to the scientific report PDF: *(to be added)*
 
